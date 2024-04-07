@@ -19,11 +19,11 @@ public class LoginController {
 	}
 	private AuthenticationService authenticationService;
 	
-	@RequestMapping(value="login",method = RequestMethod.GET)
+	@RequestMapping(value="loggin",method = RequestMethod.GET)
 	public String gotoLoginPage() {
 		return "login";	
 	}
-	@RequestMapping(value="login",method = RequestMethod.POST)
+	@RequestMapping(value="loggin",method = RequestMethod.POST)
 	public String gotoWelcomePage(@RequestParam String username,@RequestParam String password,ModelMap model) {
 	model.put("username", username);	
 	 
