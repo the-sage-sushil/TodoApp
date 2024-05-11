@@ -1,12 +1,25 @@
-package com.sushilmishra.springboot.myfirstwebapp.todo;
+package com.in28minutes.springboot.myfirstwebapp.todo;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
+//Database (MySQL) 
+//Static List of todos => Database (H2, MySQL)
 
+//JPA
+// Bean -> Database Table
+
+@Entity
 public class Todo {
 
+	public Todo() {
+		
+	}
+	
 	public Todo(int id, String username, String description, LocalDate targetDate, boolean done) {
 		super();
 		this.id = id;
@@ -16,19 +29,16 @@ public class Todo {
 		this.done = done;
 	}
 
+	@Id
+	@GeneratedValue
+	private int id;
 
-	private int id;	
-	private String username;	
+	private String username;
 	
-	@Size(min=10,message = "Enter at least 10 charecter")
+	@Size(min=10, message="Enter at least 10 characters")
 	private String description;
 	private LocalDate targetDate;
 	private boolean done;
-	@Override
-	public String toString() {
-		return "Todo [id=" + id + ", username=" + username + ", description=" + description + ", targetDate="
-				+ targetDate + ", done=" + done + "]";
-	}
 
 	public int getId() {
 		return id;
@@ -68,6 +78,12 @@ public class Todo {
 
 	public void setDone(boolean done) {
 		this.done = done;
+	}
+
+	@Override
+	public String toString() {
+		return "Todo [id=" + id + ", username=" + username + ", description=" + description + ", targetDate="
+				+ targetDate + ", done=" + done + "]";
 	}
 
 }
